@@ -1,0 +1,51 @@
+<html>
+
+<title>
+Vista usuarios
+</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A continuacion se presentan los datos de la vista del punto a">
+<head>
+    <link rel="stylesheet" href="cssPagina.css" />
+</head>
+
+<body>
+<h1>Vista usuarios</h1>
+
+<p>A continuacion se presentan los datos de la vista del punto a:</p>
+
+    <table id="vista-usuarios">
+        
+    </table>
+
+<h1>Consultas</h1>
+
+<p>A continuacion se presentan los datos de las consultas del punto b:
+</p>
+
+<select class="custom-select" style="width:400px;" id="tipoConsulta">
+  <option value="1">Numero de llamadas realizadas por cada usuario</option>
+  <option value="2">10 llamadas de mayor duracion</option>
+  <option value="3">10 llamadas con mayor costo</option>
+  <option value="4">Numero de llamadas y coste por servicio</option>
+</select>
+
+<table id="tabla">        
+</table>
+<p>A continuacion se presentan los datos de la vista del punto c:</p>
+
+<form onsubmit="resumenLlamada(); return false;">
+  <!-- Crear el cuadro de texto con un id -->
+  <input type="text" id="extension" placeholder="Escribe la extension">
+  <!-- Crear el botón de envío -->
+  <input type="submit" value="Enviar">
+</form>
+
+<table id="resumen-llamadas">
+    
+</table>
+
+
+<script src="scriptPagina.js"></script>
+</body>
+</html>

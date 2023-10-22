@@ -1,0 +1,58 @@
+CREATE VIEW VistaLlamadas AS
+SELECT e.numeroextension, e.nombreusuario, l.fechahorallamada, l.duracionllamada, l.costollamada, s.tiposervicio
+FROM Extensiones e
+JOIN Llamadas l ON e.numeroextension = l.numeroextension
+JOIN Servicios s ON l.tiposervicio = s.tiposervicio
+
+CREATE TABLE Extensiones (
+  NombreUsuario VARCHAR(50) NOT NULL,
+  NumeroExtension INT PRIMARY KEY
+  );
+CREATE TABLE Llamadas (
+  Id INT NOT NULL AUTO_INCREMENT,
+  NumeroExtension INT,
+  NumeroMarcado INT,
+  FechaHoraLlamada DATETIME NOT NULL,
+  DuracionLlamada INT NOT NULL,
+  CostoLlamada INT NOT NULL,
+  TipoServicio INT NOT NULL,
+  PRIMARY KEY (Id),
+  FOREIGN KEY (NumeroExtension) REFERENCES Extensiones(NumeroExtension)
+  );
+
+CREATE TABLE Servicios (
+  TipoServicio INT,
+  DescripcionServicio VARCHAR(50),
+  PRIMARY KEY (TipoServicio)
+);
+
+INSERT INTO Servicios (TipoServicio, DescripcionServicio)
+VALUES
+(1, 'Llamada Local'),
+(2, 'Llamada Nacional'),
+(3, 'Llamada Internacional'),
+(4, 'Llamada Celular');
+
+
+INSERT INTO Extensiones (NumeroExtension, NombreUsuario)
+VALUES
+(5749411, 'Maria Trinidad Chica Uribe'),
+(5749412, 'Julio Cesar Gomez Gil'),
+(5749413, 'Maryori Jimenez Jimenez'),
+(5749414, 'Ruby Alexandra Hinestroza Garcia'),
+(5749415, 'Johan Alejandro Ramirez Caicedo');
+
+INSERT INTO Llamadas (Id, FechaHoraLlamada, NumeroExtension, NumeroMarcado, DuracionLlamada, CostoLlamada, TipoServicio)
+VALUES
+(1, '2021/11/21 2:18', 5749411, 3118911780, 185, 200, 4),
+(2, '2021/11/21 2:20', 5749412, 6012739400, 240, 0, 1),
+(3, '2021/11/21 3:05', 5749411, 6045441257, 120, 160, 2),
+(4, '2021/11/21 3:20', 5749413, 3002458798, 1000, 3000, 4),
+(5, '2021/11/21 3:50', 5749414, 12053568978, 170, 300, 3),
+(6, '2021/11/21 4:10', 5749413, 6087845923, 45, 80, 2),
+(7, '2021/11/21 4:12', 5749414, 6023567841, 93, 160, 2),
+(8, '2021/11/21 4:30', 5749413, 13052564578, 240, 400, 3),
+(9, '2021/11/21 4:40', 5749415, 3204785210, 45, 50, 4),
+(10, '2021/11/21 4:50', 5749413, 6012784125, 0, 0,1),
+(11, '2021/11/21 5:00', 5749414, 13052564578, 640, 1000,1),
+(12, '2021/11/21 5:10', 5749413, 3002458798, 800, 1500,1)

@@ -1,0 +1,39 @@
+a) Explique con sus palabras qué son los términos reservados async y await en C#. Dé un breve ejemplo de cada uno.
+
+Los términos  async y await en c# se utilizan para escribir código asíncrono, es decir, código que puede ejecutarse en segundo plano mientras otro código continúa en el hilo principal, osea que ambos codigos se ejecutan en paralelo. El async es el indicativo para decir que el método es asíncrono y puede contener una o más expresiones await. El await indica que el método debe esperar a que se complete una operación asíncrona antes de continuar.
+
+using UnityEngine;
+using UnityEngine.Awaitable;
+
+public class Mover : MonoBehaviour
+{
+    public float speed = 1f;
+
+    private async void Start()
+    {
+        var transform = GetComponent<Transform>();
+        while (gameObject.activeSelf)
+        {
+            await Awaitable.NextFrameAsync();
+            transform.position += Vector3.right * speed * Time.deltaTime;
+        }
+    }
+}
+
+b) Explique los verbos POST, PUT, GET y DELETE en el consumo de API’s.
+
+Los verbos POST, PUT, GET y DELETE en el uso de API’s se refieren a los métodos que se utilizan para realizar diferentes tipos de solicitudes a un servidor web. Cada método tiene un propósito y una forma de escribir diferente:
+
+POST se usa para enviar una entidad a un recurso especificado, lo que suele provocar un cambio de estado o efectos secundarios en el servidor.
+
+PUT se usa para reemplazar la información de un recurso especifico.
+
+GET se usa para recuperar la información de un recurso, sin modificarlo.
+
+DELETE se usa para eliminar el recurso especificado.
+
+c) Explica con tus palabras que es Git y GitHub y para que se utilizan.
+
+
+Git y GitHub son herramientas que se utilizan para realizar controles de versiones de aplicaciones informaticas creadas por sus usuarios, normalmente se utiliza para gestionar los cambios en el código fuente de un proyecto, realizando controles de versiones y ramas. Aunque github tambien se utiliza como red social, donde los desarrolladores pueden usarlo como blog, donde publican sus creaciones.
+
